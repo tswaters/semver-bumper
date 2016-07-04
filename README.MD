@@ -29,6 +29,21 @@ Typically I'd use this as an npm script:
 }
 ```
 
+But you can also use in code.
+
+Return codes:
+
+* -1 nothing happened
+* 0 updated successfully
+* 1 something went wrong
+
+```js
+const semverBumper = require('semver-bumper')
+semverBumper() // -1
+semverBumper('patch', 'package.json') // 0
+semverBumper('noooope') // 1
+```
+
 ```sh
 semver-bumper --version
 v1.0.0

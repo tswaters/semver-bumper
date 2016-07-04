@@ -16,27 +16,11 @@ if (argv.help) {
   process.exit(0)
 }
 
-let updateType
-let packageJsonPath
-
-switch (argv._.length) {
-case 0:
+const retCode = bumper(...argv._)
+if (retCode === -1) {
   help()
   process.exit(0)
-  break
-case 1:
-  updateType = argv._[0]
-  packageJsonPath = path.join(process.cwd(), './package.json')
-  break
-case 2:
-  updateType = argv._[0]
-  packageJsonPath = path.resolve(argv._[1])
-  break
-default:
-  help()
 }
-
-const retCode = bumper(packageJsonPath, updateType)
 process.exit(retCode)
 
 function help () {
