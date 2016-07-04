@@ -1,6 +1,6 @@
 {
   "name": "semver-bumper",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Cli utility that updates the given packageJson by the specified level.",
   "main": "index.js",
   "engines": {
