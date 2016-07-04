@@ -1,0 +1,58 @@
+#!/usr/bin/env node
+'use strict'
+
+const path = require('path')
+const argv = require('minimist')(process.argv.slice(2), {alias: {version: 'v', help: 'h'}})
+const bumper = require('../lib')
+
+if (argv.version) {
+  const pkg = require(path.join(__dirname, '../package.json'))
+  console.log(pkg.version)
+  process.exit(0)
+}
+
+if (argv.help) {
+  help()
+  process.exit(0)
+}
+
+let updateType
+let packageJsonPath
+
+switch (argv._.length) {
+case 0:
+  help()
+  process.exit(0)
+  break
+case 1:
+  updateType = argv._[0]
+  packageJsonPath = path.join(process.cwd(), './package.json')
+  break
+case 2:
+  updateType = argv._[0]
+  packageJsonPath = path.resolve(argv._[1])
+  break
+default:
+  help()
+}
+
+const retCode = bumper(packageJsonPath, updateType)
+process.exit(retCode)
+
+function help () {
+  console.log(`
+semver-bumper [file-name] [type]
+
+no parameters:
+- show help
+
+one parameter:
+- type = parameter 1
+- file-name = ./package.json
+
+two parameters:
+- type = parameter 1
+- file-name = parameter 2
+
+  `)
+}

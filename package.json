@@ -1,0 +1,28 @@
+{
+  "name": "semver-bumper",
+  "version": "1.0.1",
+  "description": "Cli utility that updates the given packageJson by the specified level.",
+  "main": "index.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "bin": {
+    "semver-bumper": "./bin/semver-bumper"
+  },
+  "scripts": {
+    "lint": "eslint \"**/*.js\""
+  },
+  "author": {
+    "name": "Tyler Waters",
+    "email": "tyler.waters@gmail.com"
+  },
+  "license": "WTFPL",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "minimist": "^1.2.0",
+    "semver": "^5.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.0.0"
+  }
+}
